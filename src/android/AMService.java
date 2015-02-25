@@ -1,4 +1,4 @@
-package com.red_folder.phonegap.plugin.backgroundservice;
+package com.winchesterdavenport.bgs.accelerometer;
 
 import com.red_folder.phonegap.plugin.backgroundservice.BackgroundService;
 

@@ -1,4 +1,4 @@
-package com.red_folder.phonegap.plugin.backgroundservice;
+package com.winchesterdavenport.bgs.accelerometer
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
