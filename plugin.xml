@@ -22,9 +22,6 @@
     <!-- android -->
     <platform name="android">
 
-	
-		<js-module src="www/AMService.js" name="AMService"></js-module>
-
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
   
             <service android:name="com.winchesterdavenport.bgs.accelerometer.AMService">

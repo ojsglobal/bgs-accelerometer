@@ -1,4 +1,4 @@
-package com.winchesterdavenport.bgs.accelerometer
+package com.winchesterdavenport.bgs.accelerometer;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -23,7 +23,8 @@ public class AMDB extends SQLiteOpenHelper {
 					"record_time integer not null, " +
 					"x real not null, " +
 					"y real not null, " +
-					"z real not null " +
+					"z real not null, " +
+					"steps integer not null " +
 				")"
 			);
 	}
