@@ -26,13 +26,14 @@ public class AMService extends BackgroundService implements SensorEventListener 
 	private static final String TAG = "AMService";
 	
 	private int daysToKeep;
-	private boolean dataread;
+	private boolean dataread = true;
 	private SensorManager manager;
 	private Sensor am;
 	private double x, y, z;
 	private int steps = 0;
 	private double fltMagnitude = 0;
 	private double fltLastAccel = 0;
+	private int intHalfSeconds = 0;
 
 	private SQLiteDatabase database;
 	private AMDB dbHelper;
@@ -41,7 +42,7 @@ public class AMService extends BackgroundService implements SensorEventListener 
 	
 	public AMService() {
 		daysToKeep = 14;
-		dataread = false;
+		dataread = true;
 		x = y = z = 0f;
 		steps = 0;		
 	}
@@ -108,19 +109,31 @@ public class AMService extends BackgroundService implements SensorEventListener 
 				try 
 				{
 
-					//THIS WILL BE EVERY 0.5 SECONDS.
 
-					database = dbHelper.getWritableDatabase();
-					ContentValues values = new ContentValues();
-					values.put("record_time", System.currentTimeMillis());
-					values.put("x", x);
-					values.put("y", y);
-					values.put("z", z);
-					values.put("steps", steps);
-					database.insert("acceldata", null, values);
+					intHalfSeconds++;
 
-					steps = 0;
-				
+					if (intHalfSeconds >= 120)
+					{
+
+						intHalfSeconds = 0;
+						//THIS WILL BE EVERY 0.5 SECONDS.
+						if (steps > 0)
+						{
+							database = dbHelper.getWritableDatabase();
+							ContentValues values = new ContentValues();
+							values.put("record_time", System.currentTimeMillis());
+							values.put("x", x);
+							values.put("y", y);
+							values.put("z", z);
+							values.put("steps", steps);
+							database.insert("acceldata", null, values);
+
+							steps = 0;
+						}
+						
+
+					}
+					
 					long maxTime = System.currentTimeMillis() - (daysToKeep * (24 * 60 * 60 * 1000));
 					database.delete("acceldata", "record_time<" + maxTime, null);
 				
