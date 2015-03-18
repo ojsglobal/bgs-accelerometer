@@ -67,7 +67,7 @@ public class AMService extends BackgroundService implements SensorEventListener 
 
 		this.startForeground(1, notification);
 		
-		int milliseconds = 10; 
+		int milliseconds = 100; 
 		database = dbHelper.getReadableDatabase();
 	    Cursor cursor = database.query("accelconfig",
 	            new String[] { "key", "value" },
@@ -112,7 +112,7 @@ public class AMService extends BackgroundService implements SensorEventListener 
 
 					intHalfSeconds++;
 
-					if (intHalfSeconds >= 6000)
+					if (intHalfSeconds >= 600)
 					{
 
 						intHalfSeconds = 0;
@@ -225,7 +225,7 @@ public class AMService extends BackgroundService implements SensorEventListener 
 
 		fltMagnitude = Math.sqrt(Math.pow(x,2) + Math.pow(y,2) + Math.pow(z,2));	
 		
-		if(fltLastAccel < 9 && fltMagnitude > 11) steps++;
+		if(fltLastAccel < 9 && fltMagnitude > 10) steps++;
 		fltLastAccel = fltMagnitude;
 
 
