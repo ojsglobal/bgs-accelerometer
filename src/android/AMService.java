@@ -225,7 +225,7 @@ public class AMService extends BackgroundService implements SensorEventListener 
 
 		fltMagnitude = Math.sqrt(Math.pow(x,2) + Math.pow(y,2) + Math.pow(z,2));	
 		
-		if(fltLastAccel < 9 && fltMagnitude > 10) steps++;
+		if(fltLastAccel < 9 && fltMagnitude > 9.7) steps++;
 		fltLastAccel = fltMagnitude;
 
 
