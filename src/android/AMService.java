@@ -60,8 +60,8 @@ public class AMService extends BackgroundService implements SensorEventListener 
 		dbHelper = new AMDB(getBaseContext());
 		
 		Notification notification = new Notification.Builder(getBaseContext())
-			.setContentTitle("MoVE")
-			.setContentText("Rewarding your movement")
+			.setContentTitle("Healthia")
+			.setContentText("Working correctly.")
 			.setSmallIcon(R.drawable.arrow_down_float)
 			.setAutoCancel(true).build();
 
