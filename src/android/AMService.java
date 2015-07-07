@@ -33,7 +33,7 @@ public class AMService extends BackgroundService implements SensorEventListener 
 	private int steps = 0;
 	private double fltMagnitude = 0;
 	private double fltLastAccel = 0;
-	private int intHalfSeconds = 0;
+	private int intMillisecondCount = 0;
 
 	private SQLiteDatabase database;
 	private AMDB dbHelper;
@@ -110,13 +110,14 @@ public class AMService extends BackgroundService implements SensorEventListener 
 				{
 
 
-					intHalfSeconds++;
+					intMillisecondCount++;
 
-					if (intHalfSeconds >= 600)
+					//Millisecond count is set to 600 (one minute), when it reaches this, we know a minute has passed, and so should store the step count, and reset intMillisecondCount and steps.
+					if (intMillisecondCount >= 600)
 					{
 
-						intHalfSeconds = 0;
-						//THIS WILL BE EVERY 0.5 SECONDS.
+						intMillisecondCount = 0;
+						
 						if (steps > 0)
 						{
 							database = dbHelper.getWritableDatabase();
