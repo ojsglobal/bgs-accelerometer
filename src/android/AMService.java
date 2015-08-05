@@ -50,7 +50,10 @@ public class AMService extends BackgroundService implements SensorEventListener 
 	@Override
 	public void onCreate() {
 		super.onCreate();
-
+		
+		PackageManager pm = getPackageManager();
+        	Intent intent = pm.getLaunchIntentForPackage(getApplicationContext().getPackageName());
+        
 		Log.d(TAG, "onCreate()");
 		
 		manager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
