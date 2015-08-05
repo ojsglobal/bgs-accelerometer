@@ -22,7 +22,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
-import android.content.pm.PackageManager;
+//import android.content.pm.PackageManager;
 
 public class AMService extends BackgroundService implements SensorEventListener {
 	private static final String TAG = "AMService";
@@ -53,8 +53,8 @@ public class AMService extends BackgroundService implements SensorEventListener 
 	public void onCreate() {
 		super.onCreate();
 		
-		PackageManager pm = getPackageManager();
-        	Intent intent = pm.getLaunchIntentForPackage(getApplicationContext().getPackageName());
+		//PackageManager pm = getPackageManager();
+        	//Intent intent = pm.getLaunchIntentForPackage(getApplicationContext().getPackageName());
         
 		Log.d(TAG, "onCreate()");
 		
