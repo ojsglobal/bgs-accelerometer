@@ -22,6 +22,8 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
+import android.content.pm.PackageManager;
+
 public class AMService extends BackgroundService implements SensorEventListener {
 	private static final String TAG = "AMService";
 	
