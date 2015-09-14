@@ -59,9 +59,9 @@ public class AMService extends BackgroundService implements SensorEventListener 
 		Log.d(TAG, "onCreate()");
 		
 		manager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
-		//am = manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+		am = manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 		
-		am = manager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
+		//am = manager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
 		
 		manager.registerListener(this, am, SensorManager.SENSOR_DELAY_NORMAL);
 		
@@ -227,17 +227,20 @@ public class AMService extends BackgroundService implements SensorEventListener 
 	}
 
 	@Override
-	public void onSensorChanged(SensorEvent event) {
-	/*	x = event.values[0];
-		y = event.values[1];
-		z = event.values[2];
-
-		fltMagnitude = Math.sqrt(Math.pow(x,2) + Math.pow(y,2) + Math.pow(z,2));	
+	public void onSensorChanged(SensorEvent event) 
+	{
+			x = event.values[0];
+			y = event.values[1];
+			z = event.values[2];
+	
+			fltMagnitude = Math.sqrt(Math.pow(x,2) + Math.pow(y,2) + Math.pow(z,2));	
+			
+			if(fltLastAccel < 9 && fltMagnitude > 9.3) steps++;
+			fltLastAccel = fltMagnitude;
+	
 		
-		if(fltLastAccel < 9 && fltMagnitude > 9.7) steps++;
-		fltLastAccel = fltMagnitude;
-*/
-	steps++;
-
+	//            steps++;
+	        
+        
 	}
 }
