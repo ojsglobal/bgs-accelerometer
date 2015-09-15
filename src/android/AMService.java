@@ -41,16 +41,16 @@ public class AMService extends BackgroundService implements SensorEventListener 
 	private AMDB dbHelper;
 	
 
-	private float   mLimit = 10;
-    private float   mLastValues[] = new float[3*2];
-    private float   mScale[] = new float[2];
-    private float   mYOffset;
-
-    private float   mLastDirections[] = new float[3*2];
-    private float   mLastExtremes[][] = { new float[3*2], new float[3*2] };
-    private float   mLastDiff[] = new float[3*2];
-    private int     mLastMatch = -1;
-   
+	private float   mLimit = 4.44;
+	private float   mLastValues[] = new float[3*2];
+	private float   mScale[] = new float[2];
+	private float   mYOffset;
+	
+	private float   mLastDirections[] = new float[3*2];
+	private float   mLastExtremes[][] = { new float[3*2], new float[3*2] };
+	private float   mLastDiff[] = new float[3*2];
+	private int     mLastMatch = -1;
+	
 
 
 	private static boolean recording = true;
@@ -63,11 +63,12 @@ public class AMService extends BackgroundService implements SensorEventListener 
 		steps = 0;		
 
 		int h = 480; // TODO: remove this constant
-        mYOffset = h * 0.5f;
-        mScale[0] = - (h * 0.5f * (1.0f / (SensorManager.STANDARD_GRAVITY * 2)));
-        mScale[1] = - (h * 0.5f * (1.0f / (SensorManager.MAGNETIC_FIELD_EARTH_MAX)));
+		mYOffset = h * 0.5f;
+		mScale[0] = - (h * 0.5f * (1.0f / (SensorManager.STANDARD_GRAVITY * 2)));
+		mScale[1] = - (h * 0.5f * (1.0f / (SensorManager.MAGNETIC_FIELD_EARTH_MAX)));
 
-		//mLimit = 10; // 1.97  2.96  4.44  6.66  10.00  15.00  22.50  33.75  50.62
+		//SENSITIVITY
+		mLimit = 4.44; // 1.97  2.96  4.44  6.66  10.00  15.00  22.50  33.75  50.62
   
 
 
