@@ -41,7 +41,7 @@ public class AMService extends BackgroundService implements SensorEventListener 
 	private AMDB dbHelper;
 	
 
-	private float  mLimit = 33.75;
+	private double  mLimit = 33.75;
 	private float   mLastValues[] = new float[3*2];
 	private float   mScale[] = new float[2];
 	private float   mYOffset;
