@@ -41,7 +41,7 @@ public class AMService extends BackgroundService implements SensorEventListener 
 	private AMDB dbHelper;
 	
 
-	private double  mLimit = 4.44;
+	private float  mLimit = 33.75;
 	private float   mLastValues[] = new float[3*2];
 	private float   mScale[] = new float[2];
 	private float   mYOffset;
@@ -68,7 +68,7 @@ public class AMService extends BackgroundService implements SensorEventListener 
 		mScale[1] = - (h * 0.5f * (1.0f / (SensorManager.MAGNETIC_FIELD_EARTH_MAX)));
 
 		//SENSITIVITY
-		mLimit = 4.44; // 1.97  2.96  4.44  6.66  10.00  15.00  22.50  33.75  50.62
+		mLimit = 33.75; // 1.97  2.96  4.44  6.66  10.00  15.00  22.50  33.75  50.62
   
 
 
